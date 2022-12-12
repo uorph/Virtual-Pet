@@ -1,4 +1,4 @@
-//Regina Richardson (ik6089)
+//Regina Richardson (ik6089) and Habiba Karimi (ck9943)
 #pragma once
 
 #include <vector>
@@ -91,12 +91,15 @@ void Pet::walk() {
 	int energyStatus = getEnergy();
 	srand(time(0));
 	int accident = rand() % (4 - 1 + 1); // accident has a range from 0 - 4
+
+	// EGG PHASE 
+
 	if (growthPhase == 1 && accident != 2) {
-		// decrease cleanliness by 1 point, energy by 1 point, increase happiness by 1 point
 		cout << "Going for walk";
 		addAction("Going for walk");
+		//Cleanliness bar decreases by one, energy bar increases by 1, happiness bar increases by 1
 		cleanlinessStatus = cleanlinessStatus - 1;
-		energyStatus = energyStatus - 1;
+		energyStatus = energyStatus + 1;
 		happinessStatus = happinessStatus + 1; 
 		setCleanliness(cleanlinessStatus); 
 		setEnergy(energyStatus); 
@@ -105,12 +108,12 @@ void Pet::walk() {
 	}
 
 	if (growthPhase == 1 && accident == 2) {
-		//decrease cleanliness by 2 points, energy by 2 points, decrease happiness by 2 points
-		cout << "The dog got lose!" << endl; 
-		addAction("The dog got lose!");
-		cleanlinessStatus = cleanlinessStatus - 2;
-		energyStatus = energyStatus - 2;
-		happinessStatus = happinessStatus -2;
+		cout << getName() << "got lose!" << endl;
+		addAction(getName() + " got lose!");
+		//Cleanliness bar decreases by one, energy bar decreases by 1, happiness bar decreases by 1
+		cleanlinessStatus = cleanlinessStatus - 1;
+		energyStatus = energyStatus - 1;
+		happinessStatus = happinessStatus - 1;
 		setCleanliness(cleanlinessStatus);
 		setEnergy(energyStatus);
 		setHappiness(happinessStatus);
@@ -120,11 +123,11 @@ void Pet::walk() {
 	// YOUNGLING STAGE
 
 	if (growthPhase == 2 && accident != 2) {
-		// decrease cleanliness by 2 point, energy by 2 point, increase happiness by 2 point
 		cout << "Going for walk" << endl;
 		addAction("Going for walk");
-		cleanlinessStatus = cleanlinessStatus - 2;
-		energyStatus = energyStatus - 2;
+		//Cleanliness bar decreases by one, energy bar increases by 2, happiness bar increases by 2
+		cleanlinessStatus = cleanlinessStatus - 1;
+		energyStatus = energyStatus + 2;
 		happinessStatus = happinessStatus + 2;
 		setCleanliness(cleanlinessStatus);
 		setEnergy(energyStatus);
@@ -133,9 +136,37 @@ void Pet::walk() {
 	}
 
 	if (growthPhase == 2 && accident == 2) {
-		//decrease cleanliness by 3 points, energy by 3 points, decrease happiness by 3 points
-		cout << "The dog got lose!" << endl;
-		addAction("The dog got lose!");
+		cout << getName() << "got lose!" << endl;
+		addAction(getName() + " got lose!");
+		//Cleanliness bar decreases by 2, energy bar decreases by 2, happiness bar decreases by 2
+		cleanlinessStatus = cleanlinessStatus - 2;
+		energyStatus = energyStatus - 2;
+		happinessStatus = happinessStatus - 2;
+		setCleanliness(cleanlinessStatus);
+		setEnergy(energyStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	//  TEEN STAGE
+
+	if (growthPhase == 3 && accident != 2) {
+		cout << "Going for walk" << endl;
+		addAction("Going for walk");
+		//Cleanliness bar decreases by one, energy bar increases by 3, happiness bar increases by 3
+		cleanlinessStatus = cleanlinessStatus - 1;
+		energyStatus = energyStatus + 3;
+		happinessStatus = happinessStatus + 3;
+		setCleanliness(cleanlinessStatus);
+		setEnergy(energyStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	if (growthPhase == 3 && accident == 2) {
+		cout << getName() << "got lose!" << endl;
+		addAction(getName() + " got lose!");
+		//Cleanliness bar decreases by 3, energy bar decreases by 3, happiness bar decreases by 3
 		cleanlinessStatus = cleanlinessStatus - 3;
 		energyStatus = energyStatus - 3;
 		happinessStatus = happinessStatus - 3;
@@ -145,6 +176,33 @@ void Pet::walk() {
 		printStats();
 	}
 
+	// ADULTHOOD STAGE 
+
+	if (growthPhase == 4 && accident != 2) {
+		cout << "Going for walk" << endl;
+		addAction("Going for walk");
+		//Cleanliness bar decreases by one, energy bar increases by 4, happiness bar increases by 4
+		cleanlinessStatus = cleanlinessStatus - 1;
+		energyStatus = energyStatus + 4;
+		happinessStatus = happinessStatus + 4;
+		setCleanliness(cleanlinessStatus);
+		setEnergy(energyStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	if (growthPhase == 4 && accident == 2) {
+		cout << getName() << "got lose!" << endl;
+		addAction(getName() + " got lose!");
+		//Cleanliness bar decreases by 4, energy bar decreases by 4, happiness bar decreases by 4
+		cleanlinessStatus = cleanlinessStatus - 4;
+		energyStatus = energyStatus - 4;
+		happinessStatus = happinessStatus - 4;
+		setCleanliness(cleanlinessStatus);
+		setEnergy(energyStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
 	checkGrowthStatus(); 
 	
 }
@@ -156,10 +214,26 @@ void Pet::fetch() {
 	srand(time(0));
 	int accident = rand() % (4 - 1 + 1); // accident has a range from 0 - 4
 	cout << accident;
+
+	//EGG STAGE 
+
 	if (growthPhase == 1 && accident != 3) {
-		// decrease cleanliness by 2 points, energy by 2 points, increase happiness by 2 points
 		cout << "Playing a game of fetch" << endl;
 		addAction("Playing a game of fetch");
+		//Cleanliness bar decreases by 1, energy bar decreases by 1, happiness bar increases by 2
+		cleanlinessStatus -= 1;
+		energyStatus -= 1;
+		happinessStatus += 2;
+		setCleanliness(cleanlinessStatus);
+		setEnergy(energyStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	if (growthPhase == 1 && accident == 3) {
+		cout << getName() << " will not drop the ball!" << endl;
+		addAction(getName() + " will not drop the ball!");
+		//Cleanliness bar decreases by 2, energy bar decreases by 2, happiness bar increases by 2
 		cleanlinessStatus -= 2;
 		energyStatus -= 2;
 		happinessStatus += 2;
@@ -169,24 +243,25 @@ void Pet::fetch() {
 		printStats();
 	}
 
-	if (growthPhase == 1 && accident == 3) {
-		//decrease cleanliness by 3 points, energy by 3 points, decrease happiness by 3 points
-		cout << "The dog will not drop the ball!" << endl;
-		addAction("The dog will not drop the ball!");
-		cleanlinessStatus -= 3;
-		energyStatus -= 3;
-		happinessStatus -= 3;
+	//YOUNGLING STAGE
+
+	if (growthPhase == 2 && accident != 3) {
+		cout << "Playing a game of fetch" << endl;
+		addAction("Playing a game of fetch");
+		//Cleanliness bar decreases by 2, energy bar decreases by 2, happiness bar increases by 3
+		cleanlinessStatus -= 2;
+		energyStatus -= 2;
+		happinessStatus += 3;
 		setCleanliness(cleanlinessStatus);
 		setEnergy(energyStatus);
 		setHappiness(happinessStatus);
 		printStats();
 	}
 
-	//YOUNGLING STAGE
-	if (growthPhase == 2 && accident != 3) {
-		// decrease cleanliness by 3 points, energy by 3 points, increase happiness by 3 points
-		cout << "Playing a game of fetch" << endl;
-		addAction("Playing a game of fetch");
+	if (growthPhase == 2 && accident == 3) {
+		cout << getName() << " will not drop the ball!" << endl;
+		addAction(getName() + " will not drop the ball!");
+		//Cleanliness bar decreases by 3, energy bar decreases by 3, happiness bar increases by 3
 		cleanlinessStatus -= 3;
 		energyStatus -= 3;
 		happinessStatus += 3;
@@ -196,13 +271,56 @@ void Pet::fetch() {
 		printStats();
 	}
 
-	if (growthPhase == 2 && accident == 3) {
-		//decrease cleanliness by 4 points, energy by 4 points, decrease happiness by 4 points
-		cout << "The dog will not drop the ball!" << endl;
-		addAction("The dog will not drop the ball!");
+	//TEEN STAGE
+
+	if (growthPhase == 3 && accident != 3) {
+		cout << "Playing a game of fetch" << endl;
+		addAction("Playing a game of fetch");
+		//Cleanliness bar decreases by 3, energy bar decreases by 3, happiness bar increases by 4
+		cleanlinessStatus -= 3;
+		energyStatus -= 3;
+		happinessStatus += 4;
+		setCleanliness(cleanlinessStatus);
+		setEnergy(energyStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	if (growthPhase == 3 && accident == 3) {
+		cout << getName() << " will not drop the ball!" << endl;
+		addAction(getName() + " will not drop the ball!");
+		//Cleanliness bar decreases by 4, energy bar decreases by 4, happiness bar increases by 4
 		cleanlinessStatus -= 4;
 		energyStatus -= 4;
-		happinessStatus -= 4;
+		happinessStatus += 4;
+		setCleanliness(cleanlinessStatus);
+		setEnergy(energyStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	//ADULTHOOD STAGE
+
+	if (growthPhase == 4 && accident != 3) {
+		cout << "Playing a game of fetch" << endl;
+		addAction("Playing a game of fetch");
+		//Cleanliness bar decreases by 4, energy bar decreases by 4, happiness bar increases by 5
+		cleanlinessStatus -= 4;
+		energyStatus -= 4;
+		happinessStatus += 5;
+		setCleanliness(cleanlinessStatus);
+		setEnergy(energyStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	if (growthPhase == 4 && accident == 3) {
+		cout << getName() << " will not drop the ball!" << endl;
+		addAction(getName() + " will not drop the ball!");
+		//Cleanliness bar decreases by 5, energy bar decreases by 5, happiness bar increases by 5
+		cleanlinessStatus -= 5;
+		energyStatus -= 5;
+		happinessStatus += 5;
 		setCleanliness(cleanlinessStatus);
 		setEnergy(energyStatus);
 		setHappiness(happinessStatus);
@@ -218,27 +336,25 @@ void Pet::eat() {
 	int energyStatus = getEnergy();
 	srand(time(0));
 	int accident = rand() % (4 - 1 + 1); // accident has a range from 0 - 4
+
+	//EGG STAGE
 	if (growthPhase == 1 && accident != 4) {
-		// decrease cleanliness by 1 point, energy by 1 point, increase happiness by 1 point
-		cout << "Eating Kibble" << endl;
-		addAction("Eating Kibble");
-		cleanlinessStatus --;
-		energyStatus --;
+		cout << "Eating Food" << endl;
+		addAction("Eating Food");
+		//Energy bar increases by 1, Happiness bar increases by 1
+		energyStatus ++;
 		happinessStatus ++;
-		setCleanliness(cleanlinessStatus);
 		setEnergy(energyStatus);
 		setHappiness(happinessStatus);
 		printStats();
 	}
 
 	if (growthPhase == 1 && accident == 4) {
-		// decrease cleanliness by 2 point, energy by 3 point,  happiness by 1 point
 		cout << getName() << " ran away!" << endl;
 		addAction(getName() + " ran away!");
-		cleanlinessStatus -= 2;
-		energyStatus -= 3;
+		//Energy bar decreases by 1, happiness bar decreases by 1
+		energyStatus -= 1;
 		happinessStatus -= 1;
-		setCleanliness(cleanlinessStatus);
 		setEnergy(energyStatus);
 		setHappiness(happinessStatus);
 		printStats();
@@ -246,26 +362,68 @@ void Pet::eat() {
 
 	//YOUNGLING STAGE 
 	if (growthPhase == 2 && accident != 4) {
-		// decrease cleanliness by 2 point, energy by 2 point, increase happiness by 2 point
-		cout << "Eating Kibble" << endl;
-		addAction("Eating Kibble");
-		cleanlinessStatus = cleanlinessStatus - 2;
-		energyStatus = energyStatus - 2;
+		cout << "Eating Food" << endl;
+		addAction("Eating Food");
+		//Energy bar increases by 2, Happiness bar increases by 2
+		energyStatus = energyStatus + 2;
 		happinessStatus = happinessStatus + 2;
-		setCleanliness(cleanlinessStatus);
 		setEnergy(energyStatus);
 		setHappiness(happinessStatus);
 		printStats();
 	}
 
 	if (growthPhase == 2 && accident == 4) {
-		// decrease cleanliness by 3 point, energy by 3 point,  happiness by 2 point
 		cout << getName() << " ran away!" << endl;
 		addAction(getName() + " ran away!");
-		cleanlinessStatus -= 3;
-		energyStatus -= 3;
-		happinessStatus -= 2;
-		setCleanliness(cleanlinessStatus);
+		//Energy bar decreases by 1, happiness bar decreases by 1
+		energyStatus -= 1;
+		happinessStatus -= 1;
+		setEnergy(energyStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	//TEEN STAGE 
+	if (growthPhase == 3 && accident != 4) {
+		cout << "Eating Food" << endl;
+		addAction("Eating Food");
+		//Energy bar increases by 3, Happiness bar increases by 3
+		energyStatus = energyStatus + 3;
+		happinessStatus = happinessStatus + 3;
+		setEnergy(energyStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	if (growthPhase == 3 && accident == 4) {
+		cout << getName() << " ran away!" << endl;
+		addAction(getName() + " ran away!");
+		//Energy bar decreases by 1, happiness bar decreases by 1
+		energyStatus -= 1;
+		happinessStatus -= 1;
+		setEnergy(energyStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	//ADULTHOOD STAGE 
+	if (growthPhase == 4 && accident != 4) {
+		cout << "Eating Food" << endl;
+		addAction("Eating Food");
+		//Energy bar increases by 4, Happiness bar increases by 4
+		energyStatus = energyStatus + 4;
+		happinessStatus = happinessStatus + 4;
+		setEnergy(energyStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	if (growthPhase == 4 && accident == 4) {
+		cout << getName() << " ran away!" << endl;
+		addAction(getName() + " ran away!");
+		//Energy bar decreases by 1, happiness bar decreases by 1
+		energyStatus -= 1;
+		happinessStatus -= 1;
 		setEnergy(energyStatus);
 		setHappiness(happinessStatus);
 		printStats();
@@ -280,55 +438,95 @@ void Pet::washingStation() {
 	int energyStatus = getEnergy();
 	srand(time(0));
 	int accident = rand() % (4 - 1 + 1); // accident has a range from 0 - 4
+
+	//EGG STAGE
 	if (growthPhase == 1 && accident != 1) {
-		// Increase cleanliness by 1 points, Decrease energy by 1 point, happiness 1 point
 		cout << "Washing " << getName() << endl;
 		addAction("Washing " + getName());
+		//Cleanliness bar increases by 1, happiness bar decreases by 1
 		cleanlinessStatus ++;
-		energyStatus --;
 		happinessStatus --;
 		setCleanliness(cleanlinessStatus);
-		setEnergy(energyStatus);
 		setHappiness(happinessStatus);
 		printStats();
 	}
 
 	if (growthPhase == 1 && accident == 1) {
-		// Decrease cleanliness by 2 points, Decrease energy by 2 point, happiness 3 point
 		cout << getName() << " ran away!" << endl;
 		addAction(getName() + " ran away!");
+		//Cleanliness bar decreases by 2, happiness bar decreases by 1
 		cleanlinessStatus -= 2;
-		energyStatus -= 2;
-		happinessStatus -= 3;
+		happinessStatus -= 1;
 		setCleanliness(cleanlinessStatus);
-		setEnergy(energyStatus);
 		setHappiness(happinessStatus);
 		printStats();
 	}
 
 	//YOUNGLING
 	if (growthPhase == 2 && accident != 1) {
-		// Increase cleanliness by 2 points, Decrease energy by 2 point, happiness 2 point
 		cout << "Washing " << getName() << endl;
 		addAction("Washing " + getName());
+		//Cleanliness bar increases by 2, happiness bar decreases by 1
 		cleanlinessStatus = cleanlinessStatus + 2;
-		energyStatus = energyStatus - 2;
-		happinessStatus = happinessStatus -2;
+		happinessStatus = happinessStatus -1;
 		setCleanliness(cleanlinessStatus);
-		setEnergy(energyStatus);
 		setHappiness(happinessStatus);
 		printStats();
 	}
 
 	if (growthPhase == 2 && accident == 1) {
-		// Decrease cleanliness by 1 points, Decrease energy by 3 point, happiness 2 point
 		cout << getName() << " ran away!" << endl;
 		addAction(getName() + " ran away!");
-		cleanlinessStatus -= 1;
-		energyStatus -= 3;
-		happinessStatus -= 2;
+		//Cleanliness bar decreases by 3, happiness bar decreases by 1
+		cleanlinessStatus -= 3;
+		happinessStatus -= 1;
 		setCleanliness(cleanlinessStatus);
-		setEnergy(energyStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	//TEEN STAGE
+	if (growthPhase == 3 && accident != 1) {
+		cout << "Washing " << getName() << endl;
+		addAction("Washing " + getName());
+		//Cleanliness bar increases by 3, happiness bar decreases by 1
+		cleanlinessStatus = cleanlinessStatus + 3;
+		happinessStatus = happinessStatus - 1;
+		setCleanliness(cleanlinessStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	if (growthPhase == 3 && accident == 1) {
+		cout << getName() << " ran away!" << endl;
+		addAction(getName() + " ran away!");
+		//Cleanliness bar decreases by 4, happiness bar decreases by 1
+		cleanlinessStatus -= 4;
+		happinessStatus -= 1;
+		setCleanliness(cleanlinessStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	//ADULTHOOD STAGE
+	if (growthPhase == 4 && accident != 1) {
+		cout << "Washing " << getName() << endl;
+		addAction("Washing " + getName());
+		//Cleanliness bar increases by 4, happiness bar decreases by 1
+		cleanlinessStatus = cleanlinessStatus + 4;
+		happinessStatus = happinessStatus - 1;
+		setCleanliness(cleanlinessStatus);
+		setHappiness(happinessStatus);
+		printStats();
+	}
+
+	if (growthPhase == 4 && accident == 1) {
+		cout << getName() << " ran away!" << endl;
+		addAction(getName() + " ran away!");
+		//Cleanliness bar decreases by 5, happiness bar decreases by 1
+		cleanlinessStatus -= 5;
+		happinessStatus -= 1;
+		setCleanliness(cleanlinessStatus);
 		setHappiness(happinessStatus);
 		printStats();
 	}
